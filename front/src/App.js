@@ -6,7 +6,6 @@ import Nav from "./components/Nav/Nav";
 import About from "./views/About/About";
 import Favorites from "./views/Favorites/Favorites";
 import Access from "./views/Register/Access.jsx";
-import videoBg from "./Sources/AbleDelayedFieldmouse.mp4";
 import { getFavorites } from "./redux/actions";
 import { useEffect } from "react";
 
@@ -45,7 +44,18 @@ function App() {
       </Routes>
       <Nav user={user} userStatus={userStatus} />
 
-      <video src={videoBg} autoPlay muted loop />
+      <video
+        src="https://iframe.mediadelivery.net/play/152121/133ded83-9a2c-43a9-8ee7-e555081dec34"
+        autoPlay
+        muted
+        loop
+      />
+      <video
+        src="https://res.cloudinary.com/dajn5cfcv/video/upload/v1693505605/AbleDelayedFieldmouse_nt4txv.mp4?_s=vp-1.7.0"
+        autoplay="true"
+        muted="true"
+        loop="true"
+      ></video>
     </div>
   );
 }

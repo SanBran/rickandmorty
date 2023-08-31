@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {  postFavorites, removeFavorite, deleteCharacter  } from '../../redux/actions';
-import videoPortal from "../../Sources/Portal.gif" 
+import videoPortal from "../../Sources/Portal2.gif" 
 
 function Card({id,name,species,origin,gender, image,scrollCardRef, user, favs, userStatus}) {
    
@@ -56,6 +56,7 @@ function Card({id,name,species,origin,gender, image,scrollCardRef, user, favs, u
             dispatch(postFavorites({user,id, name, origin, image, species, gender }))
          }
       }else{
+         
          navigate('/login')
       }
       

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.nav {
+    font-family: 'Oswald', sans-serif;
+
+    position:fixed;
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    background: linear-gradient( rgba(128, 0, 128, 0) 80%, #34b301);
+    border-radius: 200px;
+    border-top: none;
+    
+    top: 2vh;
+
+    height: 6vh;
+    width: 70vw;
+
+    padding-bottom: 5px;
+}
+
+.name {
+    text-decoration: none;
+    color: rgb(232, 255, 202);
+    
+}
+
+.name:hover {
+    transform: scale(1.05);
+} 
+
+.about {
+    text-decoration: none;
+    color: rgb(232, 255, 202)
+}
+
+.about:hover {
+    transform: scale(1.05);
+}
+
+.fav {
+    text-decoration: none;
+    color: rgb(232, 255, 202)
+}
+
+.fav:hover{
+    transform: scale(1.05);
+}
+
+.img{
+    width: 40px;
+    cursor: pointer;
+    
+}
+.img:hover{
+    transform: scale(1.05);
+    
+}
+
+.random {
+    position: relative;
+    border: solid red;
+    color: rgb(199, 252, 75);
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 219, 0);
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+
+    height: 2em;
+    width: 5em;
+    cursor: pointer;
+}
+
+.random:hover{
+    scale: 1.05;
+}
+

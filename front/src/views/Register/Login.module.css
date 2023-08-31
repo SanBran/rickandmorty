@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+
+.fromContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40vw;
+    padding: 70px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.fromContainer label{
+    font-family: 'Kanit', sans-serif;
+}
+.fromContainer input{
+    color: aliceblue;
+    background: none;
+    border: none;
+    border-top:darkslategray;
+    border-bottom: 1px solid rgb(160, 253, 123);
+    border-left: 1px;
+    border-right: 1px;
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none;
+}
+
+.errorUser {
+    color: red;
+    font-family: 'Kanit', sans-serif;
+}
+.errorPass {
+    color: red;
+    font-family: 'Kanit', sans-serif;
+}
+
+.button{
+    background-color: rgba(114, 255, 20, 0.281);
+    border: 1px solid green;
+    width: 20vw;
+    margin: 0 auto;
+    color: bisque;
+    border-radius: 5px;
+}

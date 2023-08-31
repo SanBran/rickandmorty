@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.mainContainer{
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    width: 40vw;
+    max-height: 450px;
+    height: fit-content;
+    z-index: 999;
+    border: 1px solid #affc90;
+    border-radius: 10px;
+    background: rgba(25, 149, 0, 0.349);
+   
+    backdrop-filter: blur(10px);
+}
+
+.accessContainer{
+    width: 100vw;
+    min-height: 100vh;
+    background: #F5F5F5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 2s ease;
+    color: black;
+    
+}
+
+
+/* ----------------Estilo boton de cerrar x */
+.buttonClose{
+    position: absolute;
+    width: 20px;
+    top: 5px;
+    right: 5px;
+    border: none;
+    border-radius: 100%;
+    background-color: #97ff937c;
+    color: #F5F5F5;
+    font-weight: 800;
+    padding: 2px;
+
+    cursor: pointer;
+}
+
+/* ----------------Estilo del switch  */
+.switchForms{
+    margin: 30px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 7px;
+}
+.switch {
+    display: flex;
+    justify-content: center;
+    padding-inline: 50px;
+    
+}
+.switchFocus{
+    color: #00ff6a;
+    font-weight: bold;
+    padding-inline: 50px;
+    border-bottom: 2px solid #c9c9c9;
+    border-image: radial-gradient( #00ff6a 0%, #00ff6a00 60%) 30;
+    
+}
+
+.switchTitle:hover{
+    color: #00ff6a;
+}
+
+/* ----------------Estilo a contenedor de formularios  */
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    transition: all 1s ease;
+}
+.singupContainer{
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    
+    transition: all 1s ease;
+}

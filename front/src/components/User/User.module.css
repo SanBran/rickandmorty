@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.container{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.541);
+    top: 0;
+    left: -15vw;
+    width: 100vw;
+    height: 100vh;
+    z-index: 80;
+}
+
+.card{
+   
+margin: 0 auto;
+margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    width: 25vw;
+    height: fit-content;
+    padding: 50px;
+    z-index: 999;
+    border: 1px solid #affc90;
+    border-radius: 10px;
+    background: rgba(25, 149, 0, 0.349);
+   
+    backdrop-filter: blur(10px);
+}
+
+.image{
+    width: 70%;
+    border-radius: 100%;
+}
+
+.logOut{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+
+.logOutButton{
+    border: none;
+    background: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: x-large;
+    color: rgb(238, 239, 240);
+    cursor: pointer;
+}
+.logOutButton:hover{
+    transform: scale(1.05);
+}
+.icon{
+    position: relative;
+    top: 8px;
+    font-size:xx-large;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.buttonClose{
+    position: absolute;
+    width: 20px;
+    top: 5px;
+    right: 5px;
+    border: none;
+    border-radius: 100%;
+    background-color: #97ff937c;
+    color: #F5F5F5;
+    font-weight: 800;
+    padding: 2px;
+
+    cursor: pointer;
+}

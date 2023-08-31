@@ -1,0 +1,17 @@
+.divStyles {
+    position: fixed;
+    top:8vh;
+    width: 70vw;
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 50px;
+    padding-left: 27vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px,150px));
+    gap: 20px;
+    
+border: solid red;
+    
+    
+}

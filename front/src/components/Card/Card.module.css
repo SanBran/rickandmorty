@@ -1,6 +1,12 @@
+.cardContainer{
+    position: relative;
+  width: 290px;
+  height: 410px;
+  margin-bottom: 30px;
+}
+
 .card {
     position: relative;
-    left: -20vw;
     height: 410px;
     width: 290px;
 
@@ -11,7 +17,7 @@
     background-repeat: no-repeat;
     background-position-y:0;
     background-size:cover;
-    z-index: 1;
+    z-index: 2;
     border-radius: 15px;
 
     box-shadow: 0 0 10px rgb(255, 252, 47), 0 0 20px rgb(252, 255, 47), 0 0 60px rgb(217, 255, 47);   
@@ -63,14 +69,10 @@
 }
 
 .videos {
-    position: relative;
-    top: -50px;
-    left: -500px;
-    height: 500px;
-    margin-bottom: -50px;
-   
-   
-
+  position: absolute;
+  top: -80PX;
+  left: -350px;
+  width: 1000px;
   animation: desapair 3s forwards;
     
  }
@@ -84,6 +86,7 @@
         transform: scale(0);
     }
  }
+ 
 
 
 
@@ -182,6 +185,7 @@
     font-size: 20px;
     position: relative;
     left: -3px;
+    cursor: pointer;
 }
 
 .rbutton {
@@ -190,16 +194,7 @@
     font-size: 20px;
     position: relative;
     left: -3px;
+    cursor: pointer;
 }
 
-@media (max-width: 1400px) {
-    .videos {
-        
-        left: -400px;
-    
-       
-       
-    
-        
-     }
-}
+

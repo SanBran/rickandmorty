@@ -2,12 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import validationUser from '../validation/validationUser';
-import validationPass from '../validation/validationPass';
 import { postUser } from '../../redux/actions';
+import {expresions} from '../../utils/regex'
 import styles from './Login.module.css'
 
-function Login({ setForm }) {
+function Login({ setForm,signUpSuccess }) {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -21,28 +20,51 @@ function Login({ setForm }) {
     email: '',
     name: '',
     password: '' })
+  
+    const validateInputs = (state, property) => {
+     
+      if (!expresions[property].test(state[property])) {
+        switch (property) {
+          case 'name': setErrors({ ...errors, [property]: 'Invalid name' })
+            break;
+          case 'email': setErrors({ ...errors, [property]: 'Invalid email' })
+            break;
+          case 'password': setErrors({ ...errors, [property]: 'Password must be between 8-15 characters, lowercase, uppercase, numbers and special character' })
+
+        }
+      } else {
+        switch (property) {
+          case 'name': setErrors({ ...errors, [property]: '' })
+            break;
+          case 'email': setErrors({ ...errors, [property]: '' })
+            break;
+          case 'password': setErrors({ ...errors, [property]: '' })
+            break;
+        }
+      }
+  
+    }
 
   const handleInputChange = (event) => {
     const property = event.target.name
     const value =event.target.value
 
-    console.log(property);
-    console.log(value);
+    
 
     setLogInfo({...logInfo, [property]: value});
-    validationUser({...logInfo, [property]: value}, errors, setErrors)
-    validationPass({...logInfo, [property]: value}, errors, setErrors)
+    validateInputs({ ...logInfo, [property]: value }, property)
     
 }
 
-const handlerSignUp = async (event) => {
+const handlerSignUp =  (event) => {
   event.preventDefault();
   try {
-    await dispatch(postUser(logInfo));
+     dispatch(postUser(logInfo));
     setErrors("");
-    
-
     navigate('/');
+   
+
+    
   } catch (error) {
     setErrors(error.message)
   }
@@ -84,8 +106,8 @@ const handlerSignUp = async (event) => {
             />
             <p className={styles.errorPass}>{errors.password}</p>
       </div>
-
-            <button  type="submit" onClick={handlerSignUp} className={styles.button}>Register</button>
+        { errors.name || logInfo.name === "" || errors.email || logInfo.email === "" || errors.password || logInfo.password === "" ? <button  type="submit" className={styles.button} disabled>Register</button>: <button  type="submit" onClick={handlerSignUp} className={styles.button}>Register</button>}
+            
       
     </form>
   )

@@ -79,3 +79,19 @@
     scale: 1.05;
 }
 
+@media (max-width: 900px) {
+    .nav {
+        width: 100vw;
+    }
+
+    .name{
+        font-size: smaller;
+    }
+    .about{
+        font-size: smaller;
+    }
+    .fav{
+        font-size: smaller;
+    }
+}
+

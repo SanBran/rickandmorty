@@ -8,7 +8,14 @@
     margin: 0;
 
    height: 2em;
+   width: 20vw;
 }
+
+@media (max-width: 580px) {
+    .input {
+        width: 10vw;
+    }
+ }
 
 .input:focus{
     outline: none;

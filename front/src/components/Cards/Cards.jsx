@@ -1,18 +1,17 @@
 import styles from './Cards.module.css'
 import Card from '../Card/Card';
-import { useDispatch, useSelector } from 'react-redux';
-// import { getFavorites } from '../../redux/actions';
-import { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
 import logo from "../../Sources/logo.png"
 
 
 
-export default function Cards({characters, onClose, idUser,userStatus}) {
-   const dispatch = useDispatch();
+export default function Cards({characters, user, userStatus}) {
+
+  
 
    const favs = useSelector(state => state.myFavorites)
    const scrollCardRef = useRef(null); 
-   console.log(favs);
 
    const scrollToCard = () => {
       if (scrollCardRef.current) {
@@ -24,8 +23,8 @@ export default function Cards({characters, onClose, idUser,userStatus}) {
     };
    
    // useEffect(() => {
-   //    dispatch(getFavorites(idUser))
-   // }, [idUser])
+   //    dispatch(getFavorites(user))
+   // }, [user])
 
     useEffect(() => {
      scrollToCard()
@@ -41,16 +40,17 @@ export default function Cards({characters, onClose, idUser,userStatus}) {
          <div className={styles.divStyles} >
       {characters.map(({id, name, origin, image, species, gender }) => {
          return <Card 
-         Key={id}
+         key={id}
          id={id}
          name ={name} 
          origin={origin}
          species={species} 
          gender={gender} 
          image={image}
-         onClose={onClose}
          scrollCardRef={scrollCardRef}
-         idUser={idUser}
+         user={user}
+         favs={favs}
+         userStatus={userStatus}
             />
       })}
         </div>

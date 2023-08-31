@@ -1,29 +1,37 @@
 import styles from './Card.module.css'
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {  postFavorites, removeFavorite, deleteCharacter  } from '../../redux/actions';
-import { useState, useEffect } from 'react';
 import videoPortal from "../../Sources/Portal.gif" 
 
-function Card({id,name,species,origin,gender, image, myFavorites,scrollCardRef, idUser}) {
-
+function Card({id,name,species,origin,gender, image,scrollCardRef, user, favs, userStatus}) {
+   
    const [isFav, setIsFav] = useState(false);
+   const [portal, setPortal] = useState(true)
    const dispatch = useDispatch()
-
-   const onClose = (id) => {
-      dispatch(deleteCharacter(id));
-    };
-
-   const [renderizadoCompletado, setRenderizadoCompletado] = useState(false);
+   const navigate = useNavigate();
 
    useEffect(() => {
-      const realizarRenderizado = () => {
-        setTimeout(() => {
-          setRenderizadoCompletado(true);
-        }, 2000);
-      };
+      favs.forEach((c) => {
+        if (c.id === id) {
+          setIsFav(true);
+        }
+      });
+    }, []);
   
-      realizarRenderizado();
-    }, [renderizadoCompletado]);
+
+    const onClose = useCallback((id) => {
+      dispatch(deleteCharacter(id));
+    }, [dispatch]);
+
+   useEffect(() => {
+      const timeout = setTimeout(() => {
+         setPortal(false); 
+       }, 1700);
+  
+      return () => clearTimeout(timeout)
+    }, []);
 
    
 
@@ -34,23 +42,33 @@ function Card({id,name,species,origin,gender, image, myFavorites,scrollCardRef, 
 
    // }
 
-   const handleFavorite = () => {
-      if (isFav) {
-         setIsFav(false)
-         removeFavorite(id)
-
-      } else {
-         setIsFav(true);
-         dispatch(postFavorites({idUser, name, origin, image, species, gender }))
+   const handleFavorite = async() => {
+      if (userStatus) {
+         if (isFav) {
+            try {
+               await dispatch(removeFavorite({ id, user }));
+               setIsFav(false);
+            } catch (error) {
+               console.error("Error removing favorite:", error);
+            }
+         } else {
+            setIsFav(true);
+            dispatch(postFavorites({user,id, name, origin, image, species, gender }))
+         }
+      }else{
+         navigate('/login')
       }
+      
    }
 
    
 
    return ( 
-      <>
+     
+      <div className={styles.cardContainer}>
+
       
-            <img src={videoPortal} alt='portal' className={styles.videos}  />
+      {portal &&   <img src={videoPortal} alt='portal' className={styles.videos}  />}
          
       <div ref={scrollCardRef}
        className={`${styles.card} ${isFav ? styles.yCard : styles.card}`}>
@@ -70,24 +88,14 @@ function Card({id,name,species,origin,gender, image, myFavorites,scrollCardRef, 
          <h2 className={styles.species} >{species}</h2>
          <h2 className={styles.gender}>{gender}</h2>
       </div> 
-      </> 
+      </div>
+      
       
    );
 
    
 }
    
-const mapDispatchToProps = (dispatch) => {
-   return {
-      
-      removeFavorite: (id) => {dispatch(removeFavorite(id))}
-   }
-};
 
-const mapStateToProps = (state) => {
-return {
-   myFavorites: state.myFavorites
-}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default Card;

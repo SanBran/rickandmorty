@@ -1,24 +1,19 @@
 import { useSelector } from "react-redux";
-import Card from "../../components/Card/Card";
+import Cards from "../../components/Cards/Cards";
 import styles from "./Favorites.module.css"
 
 const Favorites = () => {
 
     const favorites = useSelector((state) => state.myFavorites)
+    const userStatus = useSelector((state) => state.user.state);
+    const user = useSelector((state) => state.userDetail);
     return(
         <div className= {styles.divStyles}>
-            {
-                favorites.map(({id,name,species,gender,image}) => {
-                    return( <Card 
-                    Key={id}
-                    id={id}
-                    name ={name} 
-                    species={species}  
-                    gender={gender} 
-                    image={image}
-                    />)
-                })
-            }
+            <Cards
+              characters={favorites}
+              userStatus={userStatus}
+              user={user}
+            />
         </div>
     )
 };

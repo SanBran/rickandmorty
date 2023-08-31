@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Login from './Login'
 import SignUp from './SignUp'
@@ -10,12 +10,24 @@ function Access() {
   const navigate = useNavigate()
   
   const [form, setForm] = useState('login')
+  const [signUpSuccess, setSignUpSuccess] = useState(false);
 
   const handlerSwitchForms = (formName) => {
     setForm(formName)
 }
+
+useEffect(() => {
+  
+  const timer = setTimeout(() => {
+      setSignUpSuccess(false);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+  }, [signUpSuccess]);
+
   return (
     <div className={styles.mainContainer}>
+       {signUpSuccess && <p className={styles.successMessage}>User created successfully</p>}
        {(form === 'login' || form === 'signup') &&
                 (<>
                     <button className={styles.buttonClose}   

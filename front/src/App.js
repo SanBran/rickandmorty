@@ -17,13 +17,14 @@ function App() {
   const favorites = useSelector((state) => state.myFavorites);
   const userStatus = useSelector((state) => state.user.state);
   const user = useSelector((state) => state.userDetail);
-  console.log(user.id);
 
   useEffect(() => {
-    dispatch(getFavorites(user.id));
+    if (userStatus) {
+      dispatch(getFavorites(user.id));
+    } else {
+      return;
+    }
   }, [user]);
-
-  console.log(favorites);
 
   return (
     <div id="container">
@@ -33,7 +34,7 @@ function App() {
           element={
             <Cards
               characters={characters}
-              idUser={user}
+              user={user}
               userStatus={userStatus}
             />
           }
@@ -43,9 +44,8 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
       <Nav user={user} userStatus={userStatus} />
-      <div className="video">
-        <video src={videoBg} autoPlay muted loop />
-      </div>
+
+      <video src={videoBg} autoPlay muted loop />
     </div>
   );
 }

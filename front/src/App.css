@@ -18,29 +18,26 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   overflow-y: scroll;
-
-   
+   overflow: hidden;   
 }
 
-.video {
-   position: fixed;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   
-   width: 100%;
-   height: 100%;
-   z-index: -1;
- }
+
  
  video {
-   position: absolute;
+   position: fixed;
     
   
-  width: 1920px;
+  width: 100vw;
   height: cover;
   z-index: -1;
   
  }
+
+ @media (max-width: 1100px) {
+   video {
+      border: solid red;
+      width: auto;
+      height: 100vh;
+    }
+}
 

@@ -37,7 +37,7 @@ export default function Nav({user, userStatus}) {
 
       const random = () => {
         const id = Math.floor(Math.random() * 827) + 1;
-        console.log(id);
+        
         dispatch(getCharacterById(id))
       };
     

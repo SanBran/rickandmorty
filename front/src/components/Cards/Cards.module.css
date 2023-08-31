@@ -10,18 +10,15 @@
 .divStyles {
     position: fixed;
     top:8vh;
-    width: 70vw;
-    height: 80vh;
+    width: 95vw;
+    height: 85vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 50px;
-    padding-left: 27vw;
+    padding-inline: 10vw;
+    padding-top: 3vw;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px,150px));
-    gap: 20px;
-    
-
-     
+    grid-template-columns: repeat(auto-fill, minmax(50px,330px));
+    justify-content: center;
 }
 
 
@@ -54,13 +51,6 @@
     
  }
 
- @media (max-width: 1400px) {
-     .divStyles {
-        
-          padding-left: 23vw;  
-          width: 100vw;   
-          height: 92vh;
-    
-         
-    } 
- }
+ 
+
+ 

@@ -25,10 +25,12 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAVORITE:
-      return {
-        ...state,
-        myFavorites: [...state.myFavorites, action.payload],
-      };
+      if (!state.myFavorites.some((char) => char.id === action.payload.id)) {
+        return {
+          ...state,
+          myFavorites: [...state.myFavorites, action.payload],
+        };
+      }
 
     case REMOVE_FAVORITE:
       return {
@@ -97,7 +99,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, users: action.payload };
 
     case LOG_OUT:
-      return { ...state, user: { state: false, ref: "" } };
+      return { ...state, user: { state: false, ref: "" }, myFavorites: [] };
 
     default:
       return { ...state };

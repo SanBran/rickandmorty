@@ -25,7 +25,8 @@ export const getFavorites = (id) => {
 };
 
 export const postFavorites = ({
-  idUser,
+  user,
+  id,
   name,
   origin,
   image,
@@ -33,7 +34,8 @@ export const postFavorites = ({
   gender,
 }) => {
   const data = {
-    userId: idUser,
+    user: user,
+    id: id,
     name: name,
     origin: origin.name,
     species: species,
@@ -47,10 +49,20 @@ export const postFavorites = ({
   };
 };
 
-export const removeFavorite = (id) => {
-  return {
-    type: REMOVE_FAVORITE,
-    payload: id,
+export const removeFavorite = ({ id, user }) => {
+  const data = {
+    id: id,
+    userId: user.id,
+  };
+
+  return async function (dispatch) {
+    try {
+      const response = await axios.delete("/fav", { data });
+      console.log(response.data);
+      dispatch({ type: REMOVE_FAVORITE, payload: response.data });
+    } catch (error) {
+      console.error("Error deleting favorite:", error);
+    }
   };
 };
 
@@ -130,7 +142,7 @@ export const postUser = (form) => {
   return async function (dispatch) {
     try {
       const response = await axios.post("/newUser", form);
-      console.log(response);
+      console.log(response.data);
       return dispatch({
         type: POST_USER,
         payload: response.data,

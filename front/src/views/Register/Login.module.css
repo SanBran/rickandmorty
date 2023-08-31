@@ -44,8 +44,13 @@ input:focus{
 .button{
     background-color: rgba(114, 255, 20, 0.281);
     border: 1px solid green;
-    width: 20vw;
+    width: 10vw;
     margin: 0 auto;
     color: bisque;
     border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+.button:hover{
+    transform: scale(1.05);
 }

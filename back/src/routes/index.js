@@ -13,6 +13,6 @@ router.use("/", routeChar);
 
 router.post("/newfav", postFav);
 router.post("/fav", getFavs);
-router.delete("/fav/:id", deleteFav);
+router.delete("/fav", deleteFav);
 
 module.exports = router;

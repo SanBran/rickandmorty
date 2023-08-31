@@ -1,13 +1,12 @@
 const { Favorite } = require("../DB_connection");
 
 const deleteFav = async (req, res) => {
-  const { id } = req.params;
-  const { idUser } = req.query;
+  const { id, userId } = req.body;
 
   try {
-    const fav = await Favorite.findOne({ where: { id } });
+    const fav = await Favorite.findOne({ where: { id: id } });
 
-    await fav.removeUSer(idUser);
+    await fav.removeUser(userId);
 
     res.status(200).json({ succes: true });
   } catch (error) {

@@ -1,5 +1,4 @@
 const { User } = require("../../DB_connection");
-const jwt = require("jsonwebtoken");
 
 const userRegister = async (name, email, password, image) => {
   const dataState = {

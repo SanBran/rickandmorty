@@ -5,7 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { conn } = require("./src/DB_connection");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 const server = express();
 

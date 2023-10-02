@@ -1,13 +1,12 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const { DB_USER, DB_PASSWORD, DB_HOST, BDD } = process.env;
 const UserModel = require("./models/User");
 const FavoriteModel = require("./models/Favorite");
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/rickandmorty`,
-  { logging: false, native: false }
-);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
 
 UserModel(sequelize);
 
